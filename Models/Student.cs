@@ -3,23 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolwManualKeys.Models
 {
-    public class Course
+    public class Student
     {
         [Key]
-        [Display(Name = "Course Number")]
-        public int CourseNumber { get; set; }
+        [Display(Name = "Student Number")]
+        public int StudentNumber { get; set; }
 
+        [Display(Name = "Full Name")]
+        [StringLength(300)]
+        public string FullName { get; set; }
 
-        [StringLength(100, MinimumLength = 3)]
-        public string Title { get; set; }
-
-
-        [ForeignKey("EnrolledCourseNumber")]
+        [ForeignKey("EnrolledStudent")]
         public ICollection<Enrollment> Enrollments { get; set; }
 
-        public Course()
+        public Student()
         {
             Enrollments = new HashSet<Enrollment>();
         }
+
     }
 }
