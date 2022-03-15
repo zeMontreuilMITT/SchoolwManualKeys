@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using SchoolwManualKeys.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<SchoolwManualKeysContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolwManualKeysContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
